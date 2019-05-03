@@ -1,13 +1,21 @@
 package calculator;
 
 public class Calculator {
-	public double calculate(double number1,double number2,String oparand){
+	public String calculate(double number1,double number2,String oparand){
+		String result="";
 		switch(oparand){
-			case "add":return number1+number2;
-			case "sub":return number1-number2;
-			case "mul":return number1*number2;
-			case "div":return number1/number2;
+			case "add":result = ""+ (number1+number2); break;
+			case "sub":result = ""+ (number1-number2); break;
+			case "mul":result = ""+ (number1*number2); break;
+			case "div":result = ""+ (number1/number2); break;
 		}
-		return 0.0;
+		int indexOfDot = result.indexOf(".");
+		int lenghtOfResult = result.length()-1;
+		if(lenghtOfResult - indexOfDot > 1)
+		    return result;
+		else if(result.charAt(indexOfDot+1) != '0')
+		    return result;
+		else
+		    return result.substring(0,indexOfDot);
 	}
 }
